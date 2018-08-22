@@ -15,13 +15,13 @@
       <f7-view url="/panel-right/"></f7-view>
     </f7-panel>
 
-	<!-- Views/Tabs container -->
-	<f7-view tab ios-edges>
-		<!-- Tabbar for switching views-tabs -->
-		<f7-toolbar tabbar labels>
-			<f7-link tab-link="#view-home" tab-link-active icon-ios="f7:home" text="Home"></f7-link>
-		</f7-toolbar>
-	</f7-view>
+    <!-- Views/Tabs container -->
+    <f7-view tab ios-edges>
+      <!-- Tabbar for switching views-tabs -->
+      <f7-toolbar tabbar labels>
+        <f7-link tab-link="#view-home" tab-link-active icon-ios="f7:home" text="Home"></f7-link>
+      </f7-toolbar>
+    </f7-view>
     <!-- Main View -->
     <f7-view id="main-view" url="/" main></f7-view>
 
@@ -69,20 +69,20 @@
 
 <script>
 // Import Routes
-import routes from './routes.js'
+import routes from "./routes.js";
 
 export default {
   data() {
     return {
       // Framework7 parameters here
       f7params: {
-        id: 'io.framework7.testapp', // App bundle ID
-        name: 'Framework7', // App name
-        theme: 'auto', // Automatic theme detection
+        id: "io.framework7.testapp", // App bundle ID
+        name: "Framework7", // App name
+        theme: "auto", // Automatic theme detection
         // App routes
-        routes: routes,
-      },
-    }
+        routes: routes
+      }
+    };
   }
-}
+};
 </script>
