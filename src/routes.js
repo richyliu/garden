@@ -21,6 +21,10 @@ export default [
     component: PanelRightPage,
   },
   {
+    path: '/web/',
+    component: AboutPage,
+  },
+  {
     path: '/about/',
     component: AboutPage,
   },
