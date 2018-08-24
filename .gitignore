@@ -42,3 +42,5 @@ dist/
 npm-debug.log
 www/
 src/fonts
+
+.idea/
