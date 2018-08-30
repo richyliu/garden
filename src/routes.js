@@ -21,11 +21,11 @@ export default [
     component: PanelRightPage,
   },
   {
-    path: '/web/',
+    path: '/catalog/',
     component: AboutPage,
   },
   {
-    path: '/about/',
+    path: '/settings/',
     component: AboutPage,
   },
   {

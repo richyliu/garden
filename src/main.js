@@ -23,9 +23,20 @@ import App from './app';
 Framework7.use(Framework7Vue);
 
 // Init App
-new Vue({
+window.vue = new Vue({
   el: '#app',
   template: '<app/>',
+  data() {
+    return {
+      text: 'hello'
+    };
+  },
+
+  methods: {
+    foo() {
+      return 'youre in foo!';
+    },
+  },
 
   // Register App Component
   components: {

@@ -16,22 +16,79 @@
     </f7-toolbar>
 
     <f7-block strong>
-        <p>Welcome to Garden Manager!</p>
+        <p>{{foo}}Welcome to Garden Manager! {{text}}</p>
     </f7-block>
 
-    <f7-block-title>Navigation</f7-block-title>
-    <f7-list>
-      <f7-list-item link="/about/" title="About"></f7-list-item>
-      <f7-list-item link="/form/" title="Form"></f7-list-item>
+    <f7-list media-list>
+      <f7-list-item
+        v-for="action in actions"
+        :key="action.id"
+        :title="action.name"
+        :after="action.time"
+        :subtitle="action.location"
+        :text="action.description"
+        swipeout>
+        <f7-swipeout-actions left>
+          <f7-swipeout-button delete overswipe color="orange" @click="delay">
+            <f7-icon material="access_time"></f7-icon>
+          </f7-swipeout-button>
+          <f7-swipeout-button delete @click="remove">
+            <f7-icon material="delete"></f7-icon>
+          </f7-swipeout-button>
+        </f7-swipeout-actions>
+        <f7-swipeout-actions right>
+          <f7-swipeout-button @click="more">More</f7-swipeout-button>
+          <f7-swipeout-button delete overswipe color="green" @click="check">
+            <f7-icon material="check"></f7-icon>
+          </f7-swipeout-button>
+        </f7-swipeout-actions>
+      </f7-list-item>
     </f7-list>
 
-    <f7-list>
-      <f7-list-item link="/dynamic-route/blog/45/post/125/?foo=bar#about" title="Dynamic Route"></f7-list-item>
-      <f7-list-item link="/load-something-that-doesnt-exist/" title="Default Route (404)"></f7-list-item>
-    </f7-list>
+
 
   </f7-page>
 </template>
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      text: this.$root.text,
+      foo: this.$root.foo(),
+      actions: [
+        {
+          name: 'water',
+          location: 'plot 1',
+          time: '5:00',
+          description: 'apply little',
+          id: '03531555530327757'
+        },
+
+      ],
+      action: {
+        name: 'mulch',
+        location: 'planter 3',
+        time: '5:00',
+        description: 'apply little',
+        id: '5103696418484356'
+      }
+    };
+  },
+  methods: {
+    delay() {
+      console.log('in reply');
+    },
+    remove() {
+      console.log('in forward');
+
+    },
+    more() {
+      console.log('in more');
+
+    },
+    check() {
+      console.log(this.action);
+    }
+  }
+}
 </script>
