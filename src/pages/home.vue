@@ -6,7 +6,7 @@
       </f7-nav-left>
       <f7-nav-title>Garden Manager</f7-nav-title>
       <f7-nav-right>
-        <f7-link icon-if-ios="f7:menu" icon-if-md="material:menu" panel-open="right"></f7-link>
+        <f7-link icon-ios="f7:add"></f7-link>
       </f7-nav-right>
     </f7-navbar>
 
@@ -17,6 +17,11 @@
 
     <f7-block strong>
         <p>{{foo}}Welcome to Garden Manager! {{text}}</p>
+        <f7-row>
+          <f7-col>
+            <f7-button @click="reload">Reload</f7-button>
+          </f7-col>
+        </f7-row>
     </f7-block>
 
     <f7-list media-list>
@@ -63,23 +68,22 @@ export default {
           description: 'apply little',
           id: '03531555530327757'
         },
-
-      ],
-      action: {
-        name: 'mulch',
-        location: 'planter 3',
-        time: '5:00',
-        description: 'apply little',
-        id: '5103696418484356'
-      }
+        {
+          name: 'mulch',
+          location: 'planter 3',
+          time: '5:00',
+          description: 'apply little',
+          id: '5103696418484356'
+        }
+      ]
     };
   },
   methods: {
     delay() {
-      console.log('in reply');
+      console.log('delayed');
     },
     remove() {
-      console.log('in forward');
+      console.log('deleted');
 
     },
     more() {
@@ -88,6 +92,9 @@ export default {
     },
     check() {
       console.log(this.action);
+    },
+    reload() {
+      this.$f7router.refreshPage();
     }
   }
 }
