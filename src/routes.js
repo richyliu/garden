@@ -1,6 +1,7 @@
 import HomePage from './pages/home.vue';
-import AboutPage from './pages/about.vue';
 import FormPage from './pages/form.vue';
+import CatalogPage from './pages/catalog.vue';
+import SettingsPage from './pages/settings.vue';
 import DynamicRoutePage from './pages/dynamic-route.vue';
 import NotFoundPage from './pages/not-found.vue';
 
@@ -22,11 +23,11 @@ export default [
   },
   {
     path: '/catalog/',
-    component: AboutPage,
+    component: CatalogPage,
   },
   {
     path: '/settings/',
-    component: AboutPage,
+    component: SettingsPage,
   },
   {
     path: '/form/',
