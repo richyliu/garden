@@ -34,8 +34,12 @@ export default [
     component: FormPage,
   },
   {
-    path: '/dynamic-route/blog/:blogId/post/:postId/',
+    path: '/dynamic-route/:id/:name/',
     component: DynamicRoutePage,
+  },
+  {
+    path: '/catalog-detail/:id/',
+    component: DynamicRoutePage
   },
   {
     path: '(.*)',

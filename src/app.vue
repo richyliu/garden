@@ -20,15 +20,15 @@
       <!-- Tabbar for switching views-tabs -->
       <f7-toolbar tabbar labels>
         <f7-link tab-link="#view-home" tab-link-active icon-f7="home">
-          <f7-icon f7="home_fill" class="icon-ios-fill"></f7-icon>
+          <f7-icon ios="f7:home_fill" class="icon-ios-fill"></f7-icon>
           <span class="tabbar-label">Home</span>
         </f7-link>
         <f7-link tab-link="#view-catalog" icon-f7="book">
-          <f7-icon f7="book_fill" class="icon-ios-fill"></f7-icon>
+          <f7-icon ios="f7:book_fill" class="icon-ios-fill"></f7-icon>
           <span class="tabbar-label">Catalog</span>
         </f7-link>
         <f7-link tab-link="#view-settings" icon-f7="settings">
-          <f7-icon f7="settings_fill" class="icon-ios-fill"></f7-icon>
+          <f7-icon ios="f7:settings_fill" class="icon-ios-fill"></f7-icon>
           <span class="tabbar-label">Settings</span>
         </f7-link>
       </f7-toolbar>

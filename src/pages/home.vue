@@ -16,7 +16,7 @@
     </f7-toolbar>
 
     <f7-block strong>
-        <p>{{foo}}Welcome to Garden Manager! {{text}}</p>
+        <p>Welcome to Garden Manager!</p>
         <f7-row>
           <f7-col>
             <f7-button @click="reload">Reload</f7-button>
@@ -32,18 +32,15 @@
         :after="action.time"
         :subtitle="action.location"
         :text="action.description"
+        :link="`/dynamic-route/${action.id}/${action.name}/`"
         swipeout>
         <f7-swipeout-actions left>
-          <f7-swipeout-button delete overswipe color="orange" @click="delay">
-            <f7-icon material="access_time"></f7-icon>
-          </f7-swipeout-button>
-          <f7-swipeout-button delete @click="remove">
+          <f7-swipeout-button delete overswipe @click="remove(action)">
             <f7-icon material="delete"></f7-icon>
           </f7-swipeout-button>
         </f7-swipeout-actions>
         <f7-swipeout-actions right>
-          <f7-swipeout-button @click="more">More</f7-swipeout-button>
-          <f7-swipeout-button delete overswipe color="green" @click="check">
+          <f7-swipeout-button delete overswipe color="green" @click="done(action)">
             <f7-icon material="check"></f7-icon>
           </f7-swipeout-button>
         </f7-swipeout-actions>
@@ -79,19 +76,11 @@ export default {
     };
   },
   methods: {
-    delay() {
-      console.log('delayed');
+    remove(action) {
+      console.log('deleted', action);
     },
-    remove() {
-      console.log('deleted');
-
-    },
-    more() {
-      console.log('in more');
-
-    },
-    check() {
-      console.log(this.action);
+    done(action) {
+      console.log('done', action);
     },
     reload() {
       this.$f7router.refreshPage();
