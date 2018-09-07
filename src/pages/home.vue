@@ -28,8 +28,8 @@
       <f7-list-item
         v-for="action in actions"
         :key="action.id"
-        :title="action.name"
-        :after="action.time"
+        :title="action.type"
+        :after="action.time.format('h:mm')"
         :subtitle="action.location"
         :text="action.description"
         :link="`/dynamic-route/${action.id}/${action.name}/`"
@@ -52,39 +52,42 @@
   </f7-page>
 </template>
 <script>
-export default {
-  data() {
-    return {
-      text: this.$root.text,
-      foo: this.$root.foo(),
-      actions: [
-        {
-          name: 'water',
-          location: 'plot 1',
-          time: '5:00',
-          description: 'apply little',
-          id: '03531555530327757'
-        },
-        {
-          name: 'mulch',
-          location: 'planter 3',
-          time: '5:00',
-          description: 'apply little',
-          id: '5103696418484356'
-        }
-      ]
-    };
-  },
-  methods: {
-    remove(action) {
-      console.log('deleted', action);
+  import moment from 'moment';
+  import { ACTION_TYPES } from '../js/static';
+
+  export default {
+    data() {
+      return {
+        text: this.$root.text,
+        foo: this.$root.foo(),
+        actions: [
+          {
+            type: ACTION_TYPES.WATER,
+            location: 'plot 1',
+            time: moment('2018-09-07T05:00:00-07:00'),
+            description: 'apply little',
+            id: '03531555530327757'
+          },
+          {
+            type: 'mulch',
+            location: 'planter 3',
+            time: moment('2018-09-07T05:30:00-07:00'),
+            description: 'apply little',
+            id: '5103696418484356'
+          }
+        ]
+      };
     },
-    done(action) {
-      console.log('done', action);
-    },
-    reload() {
-      this.$f7router.refreshPage();
+    methods: {
+      remove(action) {
+        console.log('deleted', action);
+      },
+      done(action) {
+        console.log('done', action);
+      },
+      reload() {
+        this.$f7router.refreshPage();
+      }
     }
   }
-}
 </script>

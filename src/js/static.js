@@ -16,20 +16,20 @@ function Enum(...names) {
 }
 
 
-const ACTION_TYPES = Enum(
-  'WATER',
-  'MULCH',
-  'FERTILIZE',
-  'HARVEST',
-  'PRUNE',
-  'PESTICIDE',
-  'SPROUT',
-  'MOVE',
-  'PLANT',
-  'DIED',
-  'OBSERVATION',
-  'OTHER'
-);
+const ACTION_TYPES = {
+  'WATER': 'Water',
+  'MULCH': 'Mulch',
+  'FERTILIZE': 'Fertilize',
+  'HARVEST': 'Harvest',
+  'PRUNE': 'Prune',
+  'PESTICIDE': 'Pesticide',
+  'SPROUT': 'Sprout',
+  'MOVE': 'Move',
+  'PLANT': 'Plant',
+  'DIED': 'Died',
+  'OBSERVATION': 'Observation',
+  'OTHER': 'Other'
+};
 
 
 // Generates a new unique id
