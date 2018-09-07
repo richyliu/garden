@@ -1,12 +1,12 @@
-import HomePage from './pages/home.vue';
-import FormPage from './pages/form.vue';
-import CatalogPage from './pages/catalog.vue';
-import SettingsPage from './pages/settings.vue';
-import DynamicRoutePage from './pages/dynamic-route.vue';
-import NotFoundPage from './pages/not-found.vue';
+import HomePage from '../pages/home.vue';
+import FormPage from '../pages/form.vue';
+import CatalogPage from '../pages/catalog.vue';
+import SettingsPage from '../pages/settings.vue';
+import DynamicRoutePage from '../pages/dynamic-route.vue';
+import NotFoundPage from '../pages/not-found.vue';
 
-import PanelLeftPage from './pages/panel-left.vue';
-import PanelRightPage from './pages/panel-right.vue';
+import PanelLeftPage from '../pages/panel-left.vue';
+import PanelRightPage from '../pages/panel-right.vue';
 
 export default [
   {
