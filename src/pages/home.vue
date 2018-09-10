@@ -47,6 +47,10 @@
       </f7-list-item>
     </f7-list>
 
+    <f7-block>
+      <f7-button @click="callRunTest">Call runTest</f7-button>
+    </f7-block>
+
 
 
   </f7-page>
@@ -54,9 +58,13 @@
 <script>
   import moment from 'moment';
   import { ACTION_TYPES } from '../js/static';
+  import runTest from '../js/database';
+
 
   export default {
     data() {
+      window.homevue = this;
+
       return {
         text: this.$root.text,
         foo: this.$root.foo(),
@@ -87,6 +95,14 @@
       },
       reload() {
         this.$f7router.refreshPage();
+      },
+      addDescription: (id, text) => {
+        console.log('in addDescription', this);
+        // this.actions[id].description += text;
+      },
+      callRunTest() {
+        console.log('in callRunTest', this);
+        runTest.call(this);
       }
     }
   }
