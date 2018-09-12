@@ -6,7 +6,7 @@
     <f7-list>
       <f7-list-item title="Link 1" link="/test/"></f7-list-item>
       <f7-list-item title="Link 2" link="/test/"></f7-list-item>
-      <f7-list-item title="Link 3" link="#"></f7-list-item>
+      <f7-list-item title="Link 3" link="/form/"></f7-list-item>
     </f7-list>
   </f7-page>
 </template>

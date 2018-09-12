@@ -20,6 +20,11 @@
     export default {
       name: 'catalog',
       data() {
+
+        // TODO: sync list with firebase
+
+        // TODO: view map of property and have locations linked to the map
+
         return {
           plants: {
             // same numbered plants have same name, varieties are distinguished by letter
@@ -43,7 +48,7 @@
               germTempOptimal: 60,
               // maximum
               germTempMax: 90,
-              
+
               // minimum height in feet
               heightMin: 1,
               // maximum
@@ -59,7 +64,7 @@
               spacing: 1/4,
               // seed acquire date(s)
               date: [ new Date('2018-08-24') ],
-              
+
               // if plant needs shade, partial sun, or full sun
               shade: true,
               partSun: true,
@@ -108,7 +113,7 @@
                 height: 8
               }
             }
-          ] 
+          ]
         }
       }
     }

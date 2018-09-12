@@ -3,39 +3,36 @@
  */
 
 
-// Generates a constant Enum of Symbols from a list of names
-function Enum(...names) {
-  // return object
-  let ret = {};
-  // check if each name is a string
-  names.forEach(a => {
-    if (typeof a === 'string') ret[a] = Symbol(a.toLowerCase());
-  });
-
-  return Object.freeze(ret);
-}
+import {readCollection} from "./database";
 
 
 const ACTION_TYPES = {
   'WATER': 'Water',
-  'MULCH': 'Mulch',
+  'PLANT': 'Plant',
   'FERTILIZE': 'Fertilize',
+  'MULCH': 'Mulch',
   'HARVEST': 'Harvest',
+  'MOVE': 'Move',
   'PRUNE': 'Prune',
   'PESTICIDE': 'Pesticide',
-  'SPROUT': 'Sprout',
-  'MOVE': 'Move',
-  'PLANT': 'Plant',
-  'DIED': 'Died',
-  'OBSERVATION': 'Observation',
   'OTHER': 'Other'
 };
 
+const OBSERVATION_TYPES = {
+  'SPROUT': 'Sprout',
+  'EATEN': 'Eaten',
+  'DIED': 'Died',
+  'OTHER': 'Other'
+};
 
-// Generates a new unique id
-function GET_ID() {
-
-}
+// TODO: make observations tab similar to actions
 
 
-export { ACTION_TYPES };
+let LOCATIONS = {};
+readCollection('locations', data => {
+  LOCATIONS = data;
+});
+
+
+
+export { ACTION_TYPES, OBSERVATION_TYPES, LOCATIONS };
