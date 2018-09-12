@@ -16,18 +16,34 @@ db.settings({
 });
 
 
-function readCollection(col, callback) {
+function readCollection(col, success, failure=()=>{}) {
   db.collection(col).get().then(snapshot => {
     let ret = {};
     snapshot.forEach(doc => ret[doc.id] = doc.data());
 
-    callback(ret);
+    success(ret);
+  }).catch(error => {
+    failure(error);
   })
 }
 
 
-function addCollection(item, col, callback) {
-  db.collection(col).add(item).then(ref => callback(ref));
+function addCollection(item, col, success, failure=()=>{}) {
+  db
+    .collection(col)
+    .add(item)
+    .then(ref => success(ref))
+    .catch(error => failure(error));
+}
+
+
+function serializeAction(input) {
+  // TODO: finish serialization
+}
+
+
+function deserializeAction(input) {
+
 }
 
 

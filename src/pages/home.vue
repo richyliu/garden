@@ -107,6 +107,9 @@
           data[d].time = moment(data[d].time);
         });
         this.actions = data;
+      }, error => {
+        console.error(error);
+        this.$f7.dialog.alert('Unable to read actions!');
       });
 
       // TODO: sort and group actions by time
@@ -151,9 +154,12 @@
         } else if (popupData.plotNum > Static.LOCATIONS[popupData.location].numPlots) {
           this.$f7.dialog.alert('Invalid plot number');
         } else {
-          this.$f7.dialog.alert('Successfully created action!');
-
-          // TODO: push data to firebase using addCollection
+          Database.addCollection(popupData, 'actions', () => {
+            this.$f7.dialog.alert('Successfully created action!');
+          }, error => {
+            console.error(error);
+            this.$f7.dialog.alert('Unable to created action!');
+          });
 
           this.$f7.popup.close('#add-popup');
           this.popup = {
