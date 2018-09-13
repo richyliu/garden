@@ -20,6 +20,9 @@
       <p>
         <f7-button @click="reload">Reload</f7-button>
       </p>
+      <p>
+        <f7-button @click="doRun">Do run</f7-button>
+      </p>
     </f7-block>
 
     <f7-list media-list>
@@ -97,6 +100,7 @@
   import moment from 'moment';
   import * as Static from '../js/static';
   import * as Database from '../js/database';
+  import _ from 'lodash';
 
 
   export default {
@@ -149,30 +153,51 @@
 
         if (!popupData.type) {
           this.$f7.dialog.alert('A type is required');
-        } else if (!popupData.location) {
-          this.$f7.dialog.alert('An location is required');
-        } else if (popupData.plotNum > Static.LOCATIONS[popupData.location].numPlots) {
-          this.$f7.dialog.alert('Invalid plot number');
+          return;
         } else {
-          Database.addCollection(popupData, 'actions', () => {
-            this.$f7.dialog.alert('Successfully created action!');
-          }, error => {
-            console.error(error);
-            this.$f7.dialog.alert('Unable to created action!');
-          });
+          popupData.type = Static.ACTION_TYPES[popupData.type];
+        }
 
-          this.$f7.popup.close('#add-popup');
-          this.popup = {
-            type: '',
-            location: '',
-            name: '',
-            description: '',
-            plotNum: 0
-          }
+        if (!popupData.location) {
+          this.$f7.dialog.alert('An location is required');
+          return;
+        } else {
+          popupData.location = Static.LOCATIONS[popupData.location];
+        }
+
+        if (popupData.plotNum > Static.LOCATIONS[popupData.location].numPlots) {
+          this.$f7.dialog.alert('Invalid plot number');
+        }
+
+        // after ensuring form data is good, save to firebase
+        Database.addCollection(popupData, 'actions', () => {
+          this.$f7.dialog.alert('Successfully created action!');
+        }, error => {
+          console.error(error);
+          this.$f7.dialog.alert('Unable to created action!');
+        });
+
+        this.$f7.popup.close('#add-popup');
+        this.popup = {
+          type: '',
+          location: '',
+          name: '',
+          description: '',
+          plotNum: 0
         }
       },
       loadLocations() {
         this.locations = Static.LOCATIONS;
+      },
+      // temporary function for testing code
+      doRun() {
+        console.log(Database.serializeAction({
+          type: Static.ACTION_TYPES.WATER,
+          location: _.toPairs(Static.LOCATIONS)[0][1],
+          name: 'Blueberry',
+          description: 'run tester',
+          plotNum: 3
+        }));
       }
     },
     mounted() {

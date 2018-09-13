@@ -24,17 +24,15 @@
     "app",
     "f7"
   ],
-  "author": "Vladimir Kharlampidi",
+  "author": "Richard Liu",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/framework7io/framework7-template-vue-webpack/issues"
-  },
-  "homepage": "http://framework7.io/vue/",
+  "homepage": "https://richyliu.github.io/",
   "dependencies": {
     "firebase": "^5.3.0",
     "framework7": "^3.0.0",
     "framework7-icons": "^0.9.1",
     "framework7-vue": "^3.0.0",
+    "lodash": "^4.17.11",
     "material-design-icons": "^3.0.1",
     "moment": "^2.22.2",
     "npm": "^6.4.1",

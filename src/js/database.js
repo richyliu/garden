@@ -2,6 +2,8 @@
 
 import firebase from 'firebase/app';
 import 'firebase/firestore'
+import * as Static from './static';
+import _ from 'lodash';
 
 
 
@@ -38,7 +40,13 @@ function addCollection(item, col, success, failure=()=>{}) {
 
 
 function serializeAction(input) {
+  let output = _.cloneDeep(input);
+
   // TODO: finish serialization
+  if (typeof input.location !== 'string')
+    input.location = _.filter(_.toPairs(Static.LOCATIONS), a => a[1] == input.location);
+
+  return output;
 }
 
 
@@ -47,4 +55,4 @@ function deserializeAction(input) {
 }
 
 
-export { readCollection, addCollection };
+export { readCollection, addCollection, serializeAction, deserializeAction };
