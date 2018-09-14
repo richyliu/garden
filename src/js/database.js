@@ -24,9 +24,7 @@ function readCollection(col, success, failure=()=>{}) {
     snapshot.forEach(doc => ret[doc.id] = doc.data());
 
     success(ret);
-  }).catch(error => {
-    failure(error);
-  })
+  }).catch(failure);
 }
 
 
@@ -34,25 +32,19 @@ function addCollection(item, col, success, failure=()=>{}) {
   db
     .collection(col)
     .add(item)
-    .then(ref => success(ref))
-    .catch(error => failure(error));
+    .then(success)
+    .catch(failure);
 }
 
 
-function serializeAction(input) {
-  let output = _.cloneDeep(input);
-
-  // TODO: finish serialization
-  if (typeof input.location !== 'string')
-    input.location = _.filter(_.toPairs(Static.LOCATIONS), a => a[1] == input.location);
-
-  return output;
+function deleteDocument(col, item, success=()=>{}, failure=()=>{}) {
+  db
+    .collection(col)
+    .doc(item)
+    .delete()
+    .then(success)
+    .catch(failure);
 }
 
 
-function deserializeAction(input) {
-
-}
-
-
-export { readCollection, addCollection, serializeAction, deserializeAction };
+export { readCollection, addCollection, deleteDocument };

@@ -36,12 +36,12 @@
         :link="`/dynamic-route/${action.id}/${key}/`"
         swipeout>
         <f7-swipeout-actions left>
-          <f7-swipeout-button delete overswipe @click="remove(action)">
+          <f7-swipeout-button delete overswipe @click="remove(action, key)">
             <f7-icon material="delete"></f7-icon>
           </f7-swipeout-button>
         </f7-swipeout-actions>
         <f7-swipeout-actions right>
-          <f7-swipeout-button delete overswipe color="green" @click="done(action)">
+          <f7-swipeout-button delete overswipe color="green" @click="done(action, key)">
             <f7-icon material="check"></f7-icon>
           </f7-swipeout-button>
         </f7-swipeout-actions>
@@ -105,18 +105,7 @@
 
   export default {
     data() {
-      let actions = Database.readCollection('actions', data => {
-        Object.keys(data).forEach(d => {
-          data[d].location = Static.LOCATIONS[data[d].location];
-          data[d].time = moment(data[d].time);
-        });
-        this.actions = data;
-      }, error => {
-        console.error(error);
-        this.$f7.dialog.alert('Unable to read actions!');
-      });
-
-      // TODO: sort and group actions by time
+      this.loadActions();
 
       return {
         actionTypes: Static.ACTION_TYPES,
@@ -133,8 +122,42 @@
       };
     },
     methods: {
-      remove(action) {
-        console.log('deleted', action);
+      remove(action, key) {
+        // delete the action with the key
+        Database.deleteDocument('actions', key, () => {
+          // create a toast with an undo button
+          let toast = this.$f7.toast.create({
+            text: 'Successfully deleted action',
+            closeButton: true,
+            closeButtonText: 'Undo',
+            on: {
+              close: () => {
+                // serialize the action
+                // get the key of the location object
+                action.location = _.filter(_.toPairs(Static.LOCATIONS), a => a[1] == action.location)[0][0];
+                action.time = action.time.unix()*1000;
+
+                // re add the action
+                Database.addCollection(action, 'actions', () => {
+                  this.$f7.dialog.alert('Undone!');
+                  this.loadActions();
+                }, error => {
+                  console.error(error);
+                  this.$f7.dialog.alert('Unable to undo');
+                });
+              }
+            }
+          });
+
+          // open the success notification
+          toast.open();
+          // remove from actions list
+          delete this.actions[key];
+        }, error => {
+          // alert user if error
+          console.error(error);
+          this.$f7.dialog.alert('Unable to delete action!');
+        });
       },
       done(action) {
         console.log('done', action);
@@ -142,48 +165,60 @@
       reload() {
         this.$f7router.refreshPage();
       },
+      loadActions() {
+        Database.readCollection('actions', data => {
+          Object.keys(data).forEach(d => {
+            data[d].location = Static.LOCATIONS[data[d].location];
+            data[d].time = moment(data[d].time);
+          });
+          this.actions = data;
+        }, error => {
+          console.error(error);
+          this.$f7.dialog.alert('Unable to read actions!');
+        });
+
+        // TODO: sort and group actions by time
+      },
       add() {
+        // get data from the popup
         let popupData = this.popup;
+
+        // get the date value from the picker
         if (this.datePicker.getValue()) {
           popupData.time = this.datePicker.getValue()[0].getTime();
         } else {
+          // cannot continue without a date
           this.$f7.dialog.alert('Planned date is required!');
           return;
         }
 
+        // check for typ, location, and valid plotNum
         if (!popupData.type) {
           this.$f7.dialog.alert('A type is required');
-          return;
-        } else {
-          popupData.type = Static.ACTION_TYPES[popupData.type];
-        }
-
-        if (!popupData.location) {
+        } else if (!popupData.location) {
           this.$f7.dialog.alert('An location is required');
-          return;
-        } else {
-          popupData.location = Static.LOCATIONS[popupData.location];
-        }
-
-        if (popupData.plotNum > Static.LOCATIONS[popupData.location].numPlots) {
+        } else if (popupData.plotNum > popupData.location.numPlots) {
           this.$f7.dialog.alert('Invalid plot number');
-        }
+        } else {
+          // after ensuring form data is good, save to firebase
+          Database.addCollection(popupData, 'actions', () => {
+            // close and clear the popup
+            this.$f7.popup.close('#add-popup');
+            this.popup = {
+              type: '',
+              location: '',
+              name: '',
+              description: '',
+              plotNum: 0
+            };
+            this.$f7.dialog.alert('Successfully created action!');
 
-        // after ensuring form data is good, save to firebase
-        Database.addCollection(popupData, 'actions', () => {
-          this.$f7.dialog.alert('Successfully created action!');
-        }, error => {
-          console.error(error);
-          this.$f7.dialog.alert('Unable to created action!');
-        });
-
-        this.$f7.popup.close('#add-popup');
-        this.popup = {
-          type: '',
-          location: '',
-          name: '',
-          description: '',
-          plotNum: 0
+            // read actions (which now has new action)
+            this.loadActions();
+          }, error => {
+            console.error(error);
+            this.$f7.dialog.alert('Unable to created action!');
+          });
         }
       },
       loadLocations() {
@@ -191,13 +226,7 @@
       },
       // temporary function for testing code
       doRun() {
-        console.log(Database.serializeAction({
-          type: Static.ACTION_TYPES.WATER,
-          location: _.toPairs(Static.LOCATIONS)[0][1],
-          name: 'Blueberry',
-          description: 'run tester',
-          plotNum: 3
-        }));
+        this.loadActions();
       }
     },
     mounted() {
