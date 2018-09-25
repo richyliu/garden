@@ -1,86 +1,27 @@
-# Framework7 Vue + Webpack App Template
+# Garden
 
-A full-featured Framework7 Vue with Webpack setup with hot-reload & css extraction. Based on [Vue Webpack Boilerplate](https://github.com/vuejs-templates/webpack)
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
 
-## Usage
+## Development server
 
-### 1. Download this repository
-```
-git clone https://github.com/framework7io/framework7-template-vue-webpack my-app
-```
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-Repository will be downloaded into `my-app/` folder
+## Code scaffolding
 
-### 2. Instal dependencies
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-Go to the downloaded repository folder and run:
-```
-npm install
-```
+## Build
 
-This will download latest version of Framework7, Framework7-Vue, Vue and required icon fonts (to `/src/fonts/`)
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-### 3. Run the app
+## Running unit tests
 
-```
-npm run dev
-```
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-App will be opened in browser at `http://localhost:8080/`
+## Running end-to-end tests
 
-### 4. Build app for production
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-```
-npm run build
-```
+## Further help
 
-The output will be at `www/` folder
-
-## Use with cordova
-Cordova is not enabled by default, so make sure to remove the comment tags around the "<script src="cordova.js"></script>" line in [projectroot]/index.html
-```
-<body>
-  <div id="app"></div>
-
-  <!-- Cordova -->
-
-  <script src="cordova.js"></script>
-
-  <!-- built script files will be auto injected -->
-</body>
-```
-It will be added during the build process to Android/iOS. 
-
-Just put the contents of `www` folder in your cordova's project root `www` folder
-
-## One command install
-
-```
-git clone https://github.com/framework7io/framework7-template-vue-webpack my-app &&
-cd my-app &&
-npm install &&
-npm run dev
-```
-
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-```
-
-## Project Structure
-
-* `src/assets` - folder with static assets (images)
-* `src/components` - folder with custom `.vue` components
-* `src/css` - put custom app CSS styles here. Don't forget to import them in `main.js`
-* `src/pages` - app `.vue` pages
-* `src/main.js` - main app file where you include/import all required libs and init app
-* `src/routes.js` - app routes
-* `src/app.vue` - main app structure/component
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
