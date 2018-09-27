@@ -1,35 +1,40 @@
+import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { MyApp } from './app.component';
 
-import { OnsenModule } from 'ngx-onsenui';
+import { AboutPage } from '../pages/about/about';
+import { ContactPage } from '../pages/contact/contact';
+import { HomePage } from '../pages/home/home';
+import { TabsPage } from '../pages/tabs/tabs';
 
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { CatalogComponent } from './catalog/catalog.component';
-import { DetailComponent } from './detail/detail.component';
-
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
-    CatalogComponent,
-    DetailComponent
+    MyApp,
+    AboutPage,
+    ContactPage,
+    HomePage,
+    TabsPage
   ],
   imports: [
     BrowserModule,
-    OnsenModule
+    IonicModule.forRoot(MyApp)
   ],
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA
-  ],
+  bootstrap: [IonicApp],
   entryComponents: [
-    HomeComponent,
-    CatalogComponent,
-    DetailComponent
+    MyApp,
+    AboutPage,
+    ContactPage,
+    HomePage,
+    TabsPage
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    StatusBar,
+    SplashScreen,
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
+  ]
 })
-export class AppModule { }
+export class AppModule {}
