@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { OnsNavigator } from 'ngx-onsenui';
-
 import { CatalogComponent } from '../catalog/catalog.component';
+import { NavigatorService } from '../services/navigator.service';
 
 
 @Component({
@@ -12,13 +11,14 @@ import { CatalogComponent } from '../catalog/catalog.component';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private navigator: OnsNavigator) { }
+  constructor(private nav: NavigatorService) { }
 
   ngOnInit() {
+    console.log(typeof CatalogComponent);
   }
 
   push() {
-    this.navigator.element.pushPage(CatalogComponent, {
+    this.nav.goto(CatalogComponent, {
       data: {foo: 1234}
     });
   }

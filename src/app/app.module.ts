@@ -7,13 +7,15 @@ import { OnsenModule } from 'ngx-onsenui';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { CatalogComponent } from './catalog/catalog.component';
+import { DetailComponent } from './detail/detail.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    CatalogComponent
+    CatalogComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +26,8 @@ import { CatalogComponent } from './catalog/catalog.component';
   ],
   entryComponents: [
     HomeComponent,
-    CatalogComponent
+    CatalogComponent,
+    DetailComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

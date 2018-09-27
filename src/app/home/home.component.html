@@ -5,6 +5,15 @@
   <div class="background"></div>
   <div class="content">
     <p>Welcome to home page</p>
+    <ons-list-title>Today</ons-list-title>
+    <ons-list>
+      <ons-list-item (click)="push()" modifier="chevron,longdivider" expandable="true">
+        <div class="left">Left</div>
+        <div class="center">Center</div>
+        <div class="right">Right</div>
+        <div class="expandable-content">Expandable content</div>
+      </ons-list-item>
+    </ons-list>
     <ons-button (click)="push()">Push</ons-button>
   </div>
 </ons-page>
