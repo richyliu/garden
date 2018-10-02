@@ -1,34 +1,36 @@
 import { Injectable } from '@angular/core';
-import {Location} from '../../static/resources';
+
 import {DateTime} from 'luxon';
 
-/*
-  Generated class for the LocationDataProvider provider.
+import {Location, LocationMap} from '../../static/resources';
+import {PlantDataProvider} from '../plant-data/plant-data';
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
+
 @Injectable()
 export class LocationDataProvider {
 
-  private locations: Location[];
+  private locations: LocationMap;
 
-  constructor() {
-    this.locations = [
-      {
-        id: 1,
-        name: 'Plot 1',
-        place: 'by the right side',
-        origin: DateTime('7/24/18'),
-        points: [
-          {
-            x: 0,
-            y: 0
-          },
-          plant:
-        ]
-      }
-    ]
+  constructor(private plantDb: PlantDataProvider) {
+    // this.locations = {
+    //   'aoixen': {
+    //     name: 'Plot 1',
+    //     place: 'by the right side',
+    //     origin: DateTime('7/24/18'),
+    //     points: [
+    //       {
+    //         position: {
+    //           x: 0,
+    //           y: 0
+    //         },
+    //         plant: 'foobar'
+    //       },
+    //       {
+    //
+    //       }
+    //     ]
+    //   }
+    // };
   }
 
 }
