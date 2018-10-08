@@ -28,6 +28,7 @@ export class HomePage {
 
   test() {
     console.log('clicked!');
+
   }
 
 }
