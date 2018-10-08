@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import {Location} from '../../classes/resources';
 import {DateTime} from 'luxon';
 
-import {Location, LocationMap} from '../../static/resources';
+import {LocationMap} from '../../classes/resources';
 import {PlantDataProvider} from '../plant-data/plant-data';
 
 
@@ -12,25 +11,22 @@ export class LocationDataProvider {
   private locations: LocationMap;
 
   constructor(private plantDb: PlantDataProvider) {
-    // this.locations = {
-    //   'aoixen': {
-    //     name: 'Plot 1',
-    //     place: 'by the right side',
-    //     origin: DateTime('7/24/18'),
-    //     points: [
-    //       {
-    //         position: {
-    //           x: 0,
-    //           y: 0
-    //         },
-    //         plant: 'foobar'
-    //       },
-    //       {
-    //
-    //       }
-    //     ]
-    //   }
-    // };
+    this.locations = {
+      'aoixen': {
+        name: 'Plot 1',
+        place: 'by the right side',
+        origin: DateTime('7/24/18'),
+        points: [
+          {
+            position: {
+              x: 0,
+              y: 0
+            },
+            plant: this.plantDb.plant
+          }
+        ]
+      }
+    };
   }
 
 }
