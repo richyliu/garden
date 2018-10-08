@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Location} from '../../static/resources';
+import {Location} from '../../classes/resources';
 import {DateTime} from 'luxon';
 
 /*
@@ -19,13 +19,19 @@ export class LocationDataProvider {
         id: 1,
         name: 'Plot 1',
         place: 'by the right side',
-        origin: DateTime('7/24/18'),
+        origin: DateTime.fromISO('2018-07-28'),
         points: [
           {
-            x: 0,
-            y: 0
+            position: {
+              x: 0,
+              y: 0
+            },
+            plant: {
+              id: 42,
+              name: "foo",
+              creation: DateTime.fromISO('2018-07-30')
+            }
           },
-          plant:
         ]
       }
     ]

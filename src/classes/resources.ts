@@ -1,7 +1,5 @@
 import { DateTime } from 'luxon';
 
-import LocationPoint from './LocationPoint';
-import Plant from "./Plant";
 
 
 export interface Action {

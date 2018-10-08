@@ -1,11 +1,11 @@
 {
-  "name": "app",
+  "name": "garden",
   "version": "0.0.1",
-  "author": "Ionic Framework",
+  "author": "Richard Liu",
   "homepage": "http://ionicframework.com/",
   "private": true,
   "scripts": {
-    "start": "ionic-app-scripts serve",
+    "start": "ionic-app-scripts serve --nobrowser",
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
     "lint": "ionic-app-scripts lint"
@@ -35,5 +35,5 @@
     "@ionic/app-scripts": "3.2.0",
     "typescript": "~2.6.2"
   },
-  "description": "An Ionic project"
+  "description": "Garden manager app"
 }
