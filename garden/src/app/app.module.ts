@@ -38,6 +38,7 @@ import { PlantDataProvider } from '../providers/plant-data/plant-data';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     LocationDataProvider,
+    PlantDataProvider,
     PlantDataProvider
   ]
 })

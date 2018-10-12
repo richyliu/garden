@@ -15,7 +15,7 @@ export class LocationDataProvider {
       'aoixen': {
         name: 'Plot 1',
         place: 'by the right side',
-        origin: DateTime('7/24/18'),
+        origin: DateTime.fromISO('2018-07-28'),
         points: [
           {
             position: {

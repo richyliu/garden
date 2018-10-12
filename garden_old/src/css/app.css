@@ -1,0 +1,15 @@
+/* Your app styles here */
+
+/* for displaying tabbar icons in filled mode when active*/
+.ios .tabbar-labels .tab-link:not(.tab-link-active) .icon-ios-fill {
+  display: none;
+}
+.ios .tabbar-labels .tab-link.tab-link-active .icon:not(.icon-ios-fill) {
+  display: none;
+}
+
+
+/* larger material icons in list swipeouts */
+.media-list.swipeout .icon .material-icons {
+  font-size: 48px;
+}
