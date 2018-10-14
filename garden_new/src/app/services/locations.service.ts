@@ -6,6 +6,7 @@ import {Observable} from 'rxjs';
 import {LocationMap} from '../models/location-map';
 import { DateTime } from 'luxon';
 import {LocationPoint} from '../models/location-point';
+import {Action} from '../models/action';
 
 @Injectable({
   providedIn: 'root'
@@ -51,5 +52,9 @@ export class LocationsService {
     return this.fs.collection<LocationPoint>('location-points').valueChanges().pipe(
       tap(a => console.log('getLocationPoint', a))
     );
+  }
+
+  public getActions(): Observable<Action[]> {
+    return null;
   }
 }
