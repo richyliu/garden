@@ -27,7 +27,8 @@ export class LocationsService {
     //   this.fs.doc(values[0].location.path).valueChanges().subscribe(d => console.log(d));
     // });
 
-    this.getLocationPoints().subscribe();
+    this.getLocationPoints().subscribe(console.log);
+    this.getActions().subscribe(console.log);
 
     // this.getLocations().subscribe(a => console.log(a));
   }
@@ -49,12 +50,16 @@ export class LocationsService {
   }
 
   public getLocationPoints(): Observable<LocationPoint[]> {
-    return this.fs.collection<LocationPoint>('location-points').valueChanges().pipe(
-      tap(a => console.log('getLocationPoint', a))
-    );
+    return this.getCol<LocationPoint>('location-points');
   }
 
   public getActions(): Observable<Action[]> {
-    return null;
+    return this.getCol<Action>('actions');
+  }
+
+  public getCol<T>(name: string): Observable<T[]> {
+    return this.fs.collection<T>(name).valueChanges().pipe(
+      tap(a => console.log(name, a))
+    );
   }
 }

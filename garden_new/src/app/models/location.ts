@@ -1,4 +1,3 @@
-import { DateTime } from 'luxon';
 import {Point} from './point';
 
 export interface Location {
@@ -6,5 +5,5 @@ export interface Location {
   point: Point;
   width: number;
   height: number;
-  creation: DateTime;
+  creation: number;
 }
