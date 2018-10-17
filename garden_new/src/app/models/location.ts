@@ -5,5 +5,5 @@ export interface Location {
   point: Point;
   width: number;
   height: number;
-  creation: number;
+  time: number;
 }

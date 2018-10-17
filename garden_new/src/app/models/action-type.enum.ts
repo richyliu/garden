@@ -7,5 +7,5 @@ export enum ActionType {
   Move,
   Prune,
   Pesticide,
-  Other
+  Other,
 }

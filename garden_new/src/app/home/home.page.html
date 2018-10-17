@@ -7,9 +7,14 @@
 <ion-content padding>
 
   <ion-button (click)="clickedTest()">locations service test</ion-button>
-  <ion-button (click)="runDataInit()">data init run</ion-button>
 
   <p>
     Sample text here. Blah blah blah foo bar baz. Trying to fill up space.
   </p>
+
+  <ion-list *ngFor="let act of (actions$ | async)">
+    <ion-item>
+      Type: {{act.type}}
+    </ion-item>
+  </ion-list>
 </ion-content>

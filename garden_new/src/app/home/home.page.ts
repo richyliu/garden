@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import {LocationsService} from '../services/locations.service';
-import {DataInitService} from '../services/data-init.service';
+import {DatabaseService} from '../services/database.service';
+import {Action} from '../models/action';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -9,16 +10,15 @@ import {DataInitService} from '../services/data-init.service';
 })
 export class HomePage {
 
-  constructor(
-    private locDb: LocationsService,
-    private dataInit: DataInitService
-  ) {}
+  public actions$: Observable<Action[]>;
 
-  clickedTest() {
-    this.locDb.test();
+  constructor(
+    private db: DatabaseService
+  ) {
+    this.actions$ = this.db.getActions();
   }
 
-  runDataInit() {
-    this.dataInit.run();
+  clickedTest() {
+    this.db.test();
   }
 }

@@ -7,7 +7,10 @@ export interface LocationPoint {
    * Location point might be the only one in Location; in which case a "point" would be pointless
    */
   point?: Point;
-  plant: Planted;
+  /**
+   * The plant currently planted in this location point
+   */
+  planted: Planted;
   /**
    * Reference to location by key
    */
