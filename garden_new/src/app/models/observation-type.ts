@@ -1,7 +1,10 @@
 export enum ObservationType {
-  Pest,
-  Grow,
-  Frost,
-  Eaten,
-  Ripe,
+  pest,
+  grow,
+  frost,
+  eaten,
+  ripe,
+  flower,
+  died,
+  other,
 }

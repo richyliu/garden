@@ -1,0 +1,53 @@
+@font-face {
+  font-family: 'ao-icons';
+  src: url('assets/fonts/ao-icons.eot?uosno9');
+  src: url('assets/fonts/ao-icons.eot?uosno9#iefix') format('embedded-opentype'),
+  url('assets/fonts/ao-icons.ttf?uosno9') format('truetype'),
+  url('assets/fonts/ao-icons.woff?uosno9') format('woff'),
+  url('assets/fonts/ao-icons.svg?uosno9#ao-icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="ao-"]{
+  //@extend .ion;
+  font-family: 'ao-icons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin makeIcon($arg, $val) {
+  .ao-#{$arg}:before{
+    content: $val;
+    font-size: 1em;
+  }
+}
+
+@include makeIcon(thin, '\e900');
+@include makeIcon(clean, '\e901');
+@include makeIcon(protect, '\e902');
+@include makeIcon(create, '\e903');
+@include makeIcon(died, '\e904');
+@include makeIcon(flower, '\e905');
+@include makeIcon(ripe, '\e906');
+@include makeIcon(eaten, '\e907');
+@include makeIcon(frost, '\e908');
+@include makeIcon(grow, '\e909');
+@include makeIcon(pest, '\e90a');
+@include makeIcon(other, '\e90b');
+@include makeIcon(move, '\e90c');
+@include makeIcon(pesticide, '\e90d');
+@include makeIcon(prune, '\e90e');
+@include makeIcon(harvest, '\e90f');
+@include makeIcon(mulch, '\e910');
+@include makeIcon(fertilize, '\e911');
+@include makeIcon(plant, '\e912');
+@include makeIcon(water, '\e913');

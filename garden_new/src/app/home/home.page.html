@@ -11,10 +11,16 @@
   <p>
     Sample text here. Blah blah blah foo bar baz. Trying to fill up space.
   </p>
+  <ion-button icon-button icon-start>
+    <ion-icon class="ao-grow"></ion-icon>
+    Hello
+  </ion-button>
 
-  <ion-list *ngFor="let act of (actions$ | async)">
-    <ion-item>
-      Type: {{act.type}}
+  <ion-list>
+    <ion-item *ngFor="let act of (actions$ | async)">
+      <ion-icon [class]="'ao-' + actionTypes[act.type]"></ion-icon>
+      <h2>{{actionTypes[act.type]}}</h2>
+      <h3>{{act.description}}</h3>
     </ion-item>
   </ion-list>
 </ion-content>

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
-import {map} from 'rxjs/operators';
+import {map, tap} from 'rxjs/operators';
 import {Location} from '../models/location';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {LocationMap, LocationPointMap, PlantMap, StringMap} from '../models/model-maps';
 import { DateTime } from 'luxon';
 import {LocationPoint} from '../models/location-point';
@@ -17,6 +17,10 @@ import {Observation} from '../models/observation';
 })
 export class DatabaseService {
 
+  private locations: LocationMap;
+  private locationPoints: LocationPointMap;
+  private plants: PlantMap;
+
   constructor(
     private fs: AngularFirestore
   ) { }
@@ -29,7 +33,11 @@ export class DatabaseService {
 
 
   public getLocationMap(): Observable<LocationMap> {
-    return this.getColMap<Location>('locations') as Observable<LocationMap>;
+    if (this.locations) {
+      return of(this.locations);
+    } else {
+      return this.getColMap<Location>('locations') as Observable<LocationMap>;
+    }
   }
 
   public getLocations(): Observable<Location[]> {
@@ -42,7 +50,11 @@ export class DatabaseService {
 
 
   public getLocationPointMap(): Observable<LocationPointMap> {
-    return this.getColMap('location-points') as Observable<LocationPointMap>;
+    if (this.locationPoints) {
+      return of(this.locationPoints);
+    } else {
+      return this.getColMap('location-points') as Observable<LocationPointMap>;
+    }
   }
 
   public getLocationPoints(): Observable<LocationPoint[]> {
@@ -73,7 +85,11 @@ export class DatabaseService {
 
 
   public getPlantMap(): Observable<PlantMap> {
-    return this.getColMap<Plant>('plants');
+    if (this.plants) {
+      return of(this.plants);
+    } else {
+      return this.getColMap<Plant>('plants');
+    }
   }
 
   public getPlants(): Observable<Plant[]> {
@@ -100,7 +116,7 @@ export class DatabaseService {
 
   private getCol<T>(name: string): Observable<T[]> {
     return this.fs.collection<T>(name).valueChanges().pipe(
-      // tap(a => console.log(name, a))
+      tap(a => console.log(name, a))
     );
   }
 }
