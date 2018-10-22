@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Observations</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="addObserv()">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let obs of (observs$ | async)">
+      <ion-icon slot="start" [class]="'ao-' + observTypes[obs.type]"></ion-icon>
+      <ion-label>
+        <h2>{{observTypes[obs.type] | titlecase}}</h2>
+        <p>{{obs.description}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

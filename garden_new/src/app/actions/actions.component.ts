@@ -7,10 +7,10 @@ import {ActionType} from '../models/action-type.enum';
 
 @Component({
   selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss']
+  templateUrl: 'actions.component.html',
+  styleUrls: ['actions.component.scss']
 })
-export class HomePage {
+export class ActionsPage {
 
   public actions$: Observable<Action[]>;
   public actionTypes: NumberMap<string>;

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Home</ion-title>
+    <ion-title>Actions</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,16 +11,14 @@
   <p>
     Sample text here. Blah blah blah foo bar baz. Trying to fill up space.
   </p>
-  <ion-button icon-button icon-start>
-    <ion-icon class="ao-grow"></ion-icon>
-    Hello
-  </ion-button>
 
   <ion-list>
     <ion-item *ngFor="let act of (actions$ | async)">
-      <ion-icon [class]="'ao-' + actionTypes[act.type]"></ion-icon>
-      <h2>{{actionTypes[act.type]}}</h2>
-      <h3>{{act.description}}</h3>
+      <ion-icon slot="start" [class]="'ao-' + actionTypes[act.type]"></ion-icon>
+      <ion-label>
+        <h2>{{actionTypes[act.type] | titlecase}}</h2>
+        <p>{{act.description}}</p>
+      </ion-label>
     </ion-item>
   </ion-list>
 </ion-content>

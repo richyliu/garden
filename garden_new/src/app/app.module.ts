@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
+import { AddObservPageModule } from './add-observ/add-observ.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    AddObservPageModule
   ],
   providers: [
     StatusBar,

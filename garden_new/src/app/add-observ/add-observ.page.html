@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">Cancel</ion-button>
+    </ion-buttons>
+    <ion-title>New Observation</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="add()">Add</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-radio-group [(ngModel)]="type">
+      <ion-list-header>Type</ion-list-header>
+
+      <ion-item *ngFor="let t of observTypes">
+        <ion-label>{{t}}</ion-label>
+        <ion-radio [value]="t"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+  
+  <ion-textarea placeholder="Description..." [(ngModel)]="description"></ion-textarea>
+</ion-content>

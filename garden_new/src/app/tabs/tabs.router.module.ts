@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { TabsPage } from './tabs.page';
-import { HomePage } from '../home/home.page';
-import { AboutPage } from '../about/about.page';
+import { ActionsPage } from '../actions/actions.component';
+import { ObservationsPage } from '../observations/observations.component';
 import { ContactPage } from '../contact/contact.page';
 
 const routes: Routes = [
@@ -13,18 +13,18 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: '/tabs/(home:home)',
+        redirectTo: '/tabs/(actions:actions)',
         pathMatch: 'full',
       },
       {
-        path: 'home',
-        outlet: 'home',
-        component: HomePage
+        path: 'actions',
+        outlet: 'actions',
+        component: ActionsPage
       },
       {
-        path: 'about',
-        outlet: 'about',
-        component: AboutPage
+        path: 'observations',
+        outlet: 'observations',
+        component: ObservationsPage
       },
       {
         path: 'contact',
@@ -35,7 +35,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/tabs/(home:home)',
+    redirectTo: '/tabs/(actions:actions)',
     pathMatch: 'full'
   }
 ];
