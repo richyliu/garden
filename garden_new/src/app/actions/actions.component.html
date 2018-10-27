@@ -8,10 +8,6 @@
 
   <ion-button (click)="clickedTest()">locations service test</ion-button>
 
-  <p>
-    Sample text here. Blah blah blah foo bar baz. Trying to fill up space.
-  </p>
-
   <ion-list>
     <ion-item *ngFor="let act of (actions$ | async)">
       <ion-icon slot="start" [class]="'ao-' + actionTypes[act.type]"></ion-icon>
